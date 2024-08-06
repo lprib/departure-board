@@ -1,0 +1,374 @@
+{
+    'generatedAt': datetime.datetime(2024, 7, 15, 23, 56, 35, 790800, tzinfo=<FixedOffset '+01:00'>),
+    'locationName': 'Surbiton',
+    'crs': 'SUR',
+    'filterLocationName': None,
+    'filtercrs': None,
+    'filterType': None,
+    'nrccMessages': None,
+    'platformAvailable': True,
+    'areServicesAvailable': None,
+    'trainServices': {
+        'service': [
+            {
+                'sta': None,
+                'eta': None,
+                'std': '00:01',
+                'etd': 'On time',
+                'platform': '1',
+                'operator': 'South Western Railway',
+                'operatorCode': 'SW',
+                'isCircularRoute': None,
+                'isCancelled': None,
+                'filterLocationCancelled': None,
+                'serviceType': 'train',
+                'length': None,
+                'detachFront': None,
+                'isReverseFormation': None,
+                'cancelReason': None,
+                'delayReason': None,
+                'serviceID': '3912461SURBITN_',
+                'adhocAlerts': None,
+                'rsid': 'SW073300',
+                'origin': {
+                    'location': [
+                        {
+                            'locationName': 'Guildford',
+                            'crs': 'GLD',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'destination': {
+                    'location': [
+                        {
+                            'locationName': 'London Waterloo',
+                            'crs': 'WAT',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'currentOrigins': None,
+                'currentDestinations': None,
+                'formation': None,
+                'futureCancellation': None,
+                'futureDelay': None,
+                'diversion': None,
+                'uncertainty': None,
+                'affectedBy': None
+            },
+            {
+                'sta': None,
+                'eta': None,
+                'std': '00:05',
+                'etd': 'On time',
+                'platform': '4',
+                'operator': 'South Western Railway',
+                'operatorCode': 'SW',
+                'isCircularRoute': None,
+                'isCancelled': None,
+                'filterLocationCancelled': None,
+                'serviceType': 'train',
+                'length': None,
+                'detachFront': None,
+                'isReverseFormation': None,
+                'cancelReason': None,
+                'delayReason': None,
+                'serviceID': '3914324SURBITN_',
+                'adhocAlerts': None,
+                'rsid': 'SW320000',
+                'origin': {
+                    'location': [
+                        {
+                            'locationName': 'London Waterloo',
+                            'crs': 'WAT',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'destination': {
+                    'location': [
+                        {
+                            'locationName': 'Hampton Court',
+                            'crs': 'HMC',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'currentOrigins': None,
+                'currentDestinations': None,
+                'formation': None,
+                'futureCancellation': None,
+                'futureDelay': None,
+                'diversion': None,
+                'uncertainty': None,
+                'affectedBy': None
+            },
+            {
+                'sta': None,
+                'eta': None,
+                'std': '00:06',
+                'etd': 'On time',
+                'platform': '3',
+                'operator': 'South Western Railway',
+                'operatorCode': 'SW',
+                'isCircularRoute': None,
+                'isCancelled': None,
+                'filterLocationCancelled': None,
+                'serviceType': 'train',
+                'length': None,
+                'detachFront': None,
+                'isReverseFormation': None,
+                'cancelReason': None,
+                'delayReason': None,
+                'serviceID': '3912539SURBITN_',
+                'adhocAlerts': None,
+                'rsid': 'SW121200',
+                'origin': {
+                    'location': [
+                        {
+                            'locationName': 'London Waterloo',
+                            'crs': 'WAT',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'destination': {
+                    'location': [
+                        {
+                            'locationName': 'Basingstoke',
+                            'crs': 'BSK',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'currentOrigins': None,
+                'currentDestinations': None,
+                'formation': None,
+                'futureCancellation': None,
+                'futureDelay': None,
+                'diversion': None,
+                'uncertainty': None,
+                'affectedBy': None
+            },
+            {
+                'sta': None,
+                'eta': None,
+                'std': '00:12',
+                'etd': 'On time',
+                'platform': '1',
+                'operator': 'South Western Railway',
+                'operatorCode': 'SW',
+                'isCircularRoute': None,
+                'isCancelled': None,
+                'filterLocationCancelled': None,
+                'serviceType': 'train',
+                'length': None,
+                'detachFront': None,
+                'isReverseFormation': None,
+                'cancelReason': None,
+                'delayReason': None,
+                'serviceID': '3917616SURBITN_',
+                'adhocAlerts': None,
+                'rsid': 'SW113000',
+                'origin': {
+                    'location': [
+                        {
+                            'locationName': 'Hampton Court',
+                            'crs': 'HMC',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'destination': {
+                    'location': [
+                        {
+                            'locationName': 'Wimbledon',
+                            'crs': 'WIM',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'currentOrigins': None,
+                'currentDestinations': None,
+                'formation': None,
+                'futureCancellation': None,
+                'futureDelay': None,
+                'diversion': None,
+                'uncertainty': None,
+                'affectedBy': None
+            },
+            {
+                'sta': None,
+                'eta': None,
+                'std': '00:14',
+                'etd': 'On time',
+                'platform': '4',
+                'operator': 'South Western Railway',
+                'operatorCode': 'SW',
+                'isCircularRoute': None,
+                'isCancelled': None,
+                'filterLocationCancelled': None,
+                'serviceType': 'train',
+                'length': None,
+                'detachFront': None,
+                'isReverseFormation': None,
+                'cancelReason': None,
+                'delayReason': None,
+                'serviceID': '3930640SURBITN_',
+                'adhocAlerts': None,
+                'rsid': 'SW086400',
+                'origin': {
+                    'location': [
+                        {
+                            'locationName': 'London Waterloo',
+                            'crs': 'WAT',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'destination': {
+                    'location': [
+                        {
+                            'locationName': 'Guildford',
+                            'crs': 'GLD',
+                            'via': 'via Cobham',
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'currentOrigins': None,
+                'currentDestinations': None,
+                'formation': None,
+                'futureCancellation': None,
+                'futureDelay': None,
+                'diversion': None,
+                'uncertainty': None,
+                'affectedBy': None
+            },
+            {
+                'sta': None,
+                'eta': None,
+                'std': '00:16',
+                'etd': 'On time',
+                'platform': '2',
+                'operator': 'South Western Railway',
+                'operatorCode': 'SW',
+                'isCircularRoute': None,
+                'isCancelled': None,
+                'filterLocationCancelled': None,
+                'serviceType': 'train',
+                'length': None,
+                'detachFront': None,
+                'isReverseFormation': None,
+                'cancelReason': None,
+                'delayReason': None,
+                'serviceID': '3905411SURBITN_',
+                'adhocAlerts': None,
+                'rsid': 'SW828200',
+                'origin': {
+                    'location': [
+                        {
+                            'locationName': 'Portsmouth Harbour',
+                            'crs': 'PMH',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'destination': {
+                    'location': [
+                        {
+                            'locationName': 'London Waterloo',
+                            'crs': 'WAT',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'currentOrigins': None,
+                'currentDestinations': None,
+                'formation': None,
+                'futureCancellation': None,
+                'futureDelay': None,
+                'diversion': None,
+                'uncertainty': None,
+                'affectedBy': None
+            },
+            {
+                'sta': None,
+                'eta': None,
+                'std': '00:33',
+                'etd': 'On time',
+                'platform': '3',
+                'operator': 'South Western Railway',
+                'operatorCode': 'SW',
+                'isCircularRoute': None,
+                'isCancelled': None,
+                'filterLocationCancelled': None,
+                'serviceType': 'train',
+                'length': None,
+                'detachFront': None,
+                'isReverseFormation': None,
+                'cancelReason': None,
+                'delayReason': None,
+                'serviceID': '3932843SURBITN_',
+                'adhocAlerts': None,
+                'rsid': 'SW164200',
+                'origin': {
+                    'location': [
+                        {
+                            'locationName': 'London Waterloo',
+                            'crs': 'WAT',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'destination': {
+                    'location': [
+                        {
+                            'locationName': 'Woking',
+                            'crs': 'WOK',
+                            'via': None,
+                            'futureChangeTo': None,
+                            'assocIsCancelled': None
+                        }
+                    ]
+                },
+                'currentOrigins': None,
+                'currentDestinations': None,
+                'formation': None,
+                'futureCancellation': None,
+                'futureDelay': None,
+                'diversion': None,
+                'uncertainty': None,
+                'affectedBy': None
+            }
+        ]
+    },
+    'busServices': None,
+    'ferryServices': None
+}

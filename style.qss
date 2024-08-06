@@ -1,0 +1,80 @@
+.title-frame > QLabel {
+    color: #353a8c;
+}
+
+.station-name {
+    font-size: 60px;
+}
+
+.time {
+    font-size: 30px;
+}
+
+.window {
+    background-color: #ffffff
+}
+
+QLabel[class="station-label"] {
+    color: #2d3039
+}
+
+.departure-container[state="ontime"] {
+    background-color: #eeeeee
+}
+
+.departure-container[state="ontime"] QLabel {
+    color: #2d3039
+}
+
+.departure-container[state="delayed"] {
+    background-color: #fcc64f
+}
+
+.departure-container[state="delayed"] QLabel {
+    color: #2d3039
+}
+
+.departure-container[state="cancelled"] {
+    background-color: #ee241f
+}
+
+.departure-container[state="cancelled"] QLabel {
+    color: #ffffff
+}
+
+.departure-container QLabel {
+    font-size: 40px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.departure-container {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+
+.next-train {
+    color: #000000;
+    border: 1px solid #000000;
+    padding: 0px;
+}
+
+.title-frame {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.departure-time {
+    margin-right: 30px;
+}
+
+.error {
+    background-color: #ee241f;
+    color: #ffffff;
+    padding: 5px;
+}

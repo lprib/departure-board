@@ -1,0 +1,18 @@
+{
+    "ldbws_api_key": "your key here",
+    "boards": [
+        {
+            "type": "ldbws",
+            "crs": "WIM",
+            "operator": "Thameslink"
+        },
+        {
+            "type": "ldbws",
+            "crs": "CLJ"
+        },
+        {
+            "type": "tfl",
+            "naptan": "490014149S"
+        }
+    ]
+}
