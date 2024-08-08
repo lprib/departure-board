@@ -1,16 +1,15 @@
 import sys
-import random
 import logging
 from typing import Any
+import asyncio
+
 from PySide6 import QtCore, QtWidgets, QtGui
+import PySide6.QtAsyncio as QtAsyncio
 
 from departures_widget import RailDepartureWidget
-from ldbws_api import RailDepartureService
-from tfl_api import TflStopPointService
 from departure_service import DepartureService
 from config import Config
 
-import asyncio
 
 logger = logging.getLogger(__name__)
 

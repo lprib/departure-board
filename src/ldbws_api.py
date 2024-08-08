@@ -12,7 +12,6 @@ from departure_service import (
     TransitType,
     DepartureService,
 )
-from config import Config
 
 logger = logging.getLogger(__name__)
 
@@ -115,6 +114,8 @@ async def main():
 
 
 if __name__ == "__main__":
+    from config import Config
+
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
     loop.run_until_complete(main())
