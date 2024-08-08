@@ -32,6 +32,7 @@ class RailDepartureWidget(QWidget):
         header_layout.setContentsMargins(0, 0, 0, 0)
         header.setLayout(header_layout)
         self.main_layout.addWidget(header)
+        self.main_layout.addStretch()
 
         self.logo = QSvgWidget("busses_roundel.svg")
         header_layout.addWidget(self.logo)
@@ -66,11 +67,18 @@ class RailDepartureWidget(QWidget):
         )
 
         if departures.failtext is None:
-            self.departures_widgets = [
-                DepartureTimeWidget(d) for d in departures.departures[:4]
-            ]
-            for w in self.departures_widgets:
-                self.main_layout.addWidget(w)
+            if len(departures.departures) != 0:
+                self.departures_widgets = [
+                    DepartureTimeWidget(d) for d in departures.departures[:4]
+                ]
+                for w in self.departures_widgets:
+                    self.main_layout.addWidget(w)
+            else:
+                no_deps = QLabel("No departures found")
+                no_deps.setProperty("class", "no-deps")
+                no_deps.setFont(make_font(20))
+                self.departures_widgets = [no_deps]
+                self.main_layout.addWidget(no_deps)
         else:
             error = QLabel("Exception: " + departures.failtext)
             error.setProperty("class", "error")

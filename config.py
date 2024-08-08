@@ -1,15 +1,18 @@
 import json
+import logging
 
 import departure_service
 import ldbws_api
 import tfl_api
+
+logger = logging.getLogger(__name__)
 
 
 class Config:
     def __init__(self, filename):
         with open(filename, "r") as f:
             self.c = json.load(f)
-        print(self.c)
+        logger.info(self.c)
 
     def ldbws_api_key(self) -> str:
         return self.c["ldbws_api_key"]

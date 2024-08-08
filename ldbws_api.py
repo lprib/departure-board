@@ -1,8 +1,9 @@
+import asyncio
+import logging
+
 from zeep import Client, Settings, xsd
 from zeep.plugins import HistoryPlugin
 
-# import PySide6.QtAsyncio as QtAsyncio
-import asyncio
 
 from departure_service import (
     Departure,
@@ -11,8 +12,9 @@ from departure_service import (
     TransitType,
     DepartureService,
 )
-
 from config import Config
+
+logger = logging.getLogger(__name__)
 
 # https://lite.realtime.nationalrail.co.uk/OpenLDBWS/
 
@@ -29,6 +31,7 @@ class RailDepartureService(DepartureService):
         return f"RailDepartureService({self.crs}, {self.operator_filter})"
 
     def get_board_sync(self) -> DeparturesInfo:
+        logger.info(f"fetching board {self}")
         try:
             settings = Settings(strict=False)
             history = HistoryPlugin()
@@ -57,11 +60,15 @@ class RailDepartureService(DepartureService):
 
             return self.parse_response(res)
         except Exception as e:
+            logger.exception("exception in board fetch", exc_info=True)
             return DeparturesInfo(TransitType.NATIONAL_RAIL, self.crs, [], str(e))
 
     def parse_response(self, res) -> DeparturesInfo:
-        deps = [self.parse_departure(s) for s in res.trainServices.service]
-        deps = [d for d in deps if d is not None]
+        if res.trainServices is None:
+            deps = []
+        else:
+            deps = [self.parse_departure(s) for s in res.trainServices.service]
+            deps = [d for d in deps if d is not None]
         if self.operator_filter is not None:
             location = f"{res.locationName} ({self.operator_filter})"
         else:

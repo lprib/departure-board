@@ -1,5 +1,6 @@
 import sys
 import random
+import logging
 from typing import Any
 from PySide6 import QtCore, QtWidgets, QtGui
 
@@ -10,6 +11,8 @@ from departure_service import DepartureService
 from config import Config
 
 import asyncio
+
+logger = logging.getLogger(__name__)
 
 
 class ScreenManager(QtWidgets.QStackedWidget):
@@ -39,6 +42,16 @@ class ScreenManager(QtWidgets.QStackedWidget):
 
 
 if __name__ == "__main__":
+    logging.basicConfig(
+        filename="log.txt",
+        filemode="a",
+        format="%(asctime)s %(name)s [%(levelname)s]: %(message)s",
+        datefmt="%H:%M:%S",
+        level=logging.INFO,
+    )
+
+    logging.info("startup")
+
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
 

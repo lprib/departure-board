@@ -53,8 +53,7 @@ QLabel[class="station-label"] {
     padding-right: 20px;
     padding-top: 0px;
     padding-bottom: 0px;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin: 0px;
 }
 
 
@@ -77,4 +76,10 @@ QLabel[class="station-label"] {
     background-color: #ee241f;
     color: #ffffff;
     padding: 5px;
+}
+
+.no-deps {
+    font-size: 40px;
+    background-color: #fcc64f;
+    color: #000000;
 }

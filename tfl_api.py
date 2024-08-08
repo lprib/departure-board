@@ -7,6 +7,7 @@
 import requests
 import json
 import datetime
+import logging
 
 
 from departure_service import (
@@ -17,6 +18,8 @@ from departure_service import (
     DepartureService,
 )
 
+logger = logging.getLogger(__name__)
+
 
 class TflStopPointService(DepartureService):
     def __init__(self, naptan: str):
@@ -26,6 +29,7 @@ class TflStopPointService(DepartureService):
         return f"TflStopPointService({self.naptan})"
 
     def get_board_sync(self) -> DeparturesInfo:
+        logger.info(f"fetching board {self}")
         try:
             response = requests.get(
                 f"https://api.tfl.gov.uk/StopPoint/{self.naptan}/Arrivals"
@@ -43,6 +47,7 @@ class TflStopPointService(DepartureService):
 
             return DeparturesInfo(TransitType.BUS, stop_point_data["commonName"], deps)
         except Exception as e:
+            logger.exception("exception in board fetch", exc_info=True)
             return DeparturesInfo(TransitType.BUS, self.naptan, [], str(e))
 
     def parse_departure(self, dep) -> Departure:
