@@ -1,13 +1,10 @@
-import sys
 import logging
-from typing import Any
 import asyncio
 
-from PySide6 import QtCore, QtWidgets, QtGui
+from PySide6 import QtWidgets, QtGui
 import PySide6.QtAsyncio as QtAsyncio
 
 from departures_widget import RailDepartureWidget
-from departure_service import DepartureService
 from config import Config
 
 from screen_manager import ScreenManager

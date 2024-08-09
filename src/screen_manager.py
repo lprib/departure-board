@@ -1,8 +1,7 @@
 import asyncio
 import datetime
 
-from PySide6 import QtCore, QtWidgets, QtGui
-import PySide6.QtAsyncio as QtAsyncio
+from PySide6 import QtCore, QtGui
 from PySide6.QtWidgets import *
 
 from departures_widget import RailDepartureWidget

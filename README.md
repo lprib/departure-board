@@ -10,5 +10,9 @@ Configured by opening `config.json` from working directory. See `config.json.exa
 
 # setup
 1. create venv
-2. install requirements.txt
-3. run ui.py
+2. activate venv
+3. install requirements.txt
+4. `cp config.json.example config.json`
+5. `python src/ui.py`
+
+Script `setup.sh` will do steps 1-4 for you
