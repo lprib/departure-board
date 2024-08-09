@@ -3,11 +3,13 @@
 }
 
 .station-name {
-    font-size: 60px;
+    font-size: 50px;
 }
 
 .time {
     font-size: 30px;
+    color: #000000;
+    margin: 10px;
 }
 
 .window {
@@ -43,7 +45,7 @@ QLabel[class="station-label"] {
 }
 
 .departure-container QLabel {
-    font-size: 40px;
+    font-size: 45px;
     margin-top: 0px;
     margin-bottom: 0px;
 }
@@ -82,4 +84,26 @@ QLabel[class="station-label"] {
     font-size: 40px;
     background-color: #fcc64f;
     color: #000000;
+}
+
+QProgressBar {
+    border-radius: 0px;
+    border: 0px solid #ffffff;
+    padding: 0px;
+    margin: 0px;
+    background-color: #ffffff;
+}
+
+QProgressBar::chunk {
+    background-color: #252a8c;
+}
+
+.screen-manager {
+    margin: 0px;
+    padding: 0px;
+}
+
+.screen-manager QStackedWidget {
+    margin: 0px;
+    padding: 0px;
 }

@@ -3,18 +3,11 @@ from PySide6.QtWidgets import *
 from PySide6.QtSvgWidgets import *
 
 from departure_service import Departure, DeparturesInfo, DepartureStatus, TransitType
-
-JOHNSTON_FAMILY = "P22 Johnston Underground"
-JOHNSTON_HEAVY_FAMILY = "P22UndergroundW01-Heavy"
-JOHNSTON_STYLE = "Regular"
+import font
 
 
-def make_font(size, heavy=False) -> QtGui.QFont:
-    font = QtGui.QFontDatabase.font(
-        JOHNSTON_FAMILY if not heavy else JOHNSTON_HEAVY_FAMILY, JOHNSTON_STYLE, size
-    )
-    font.setHintingPreference(QtGui.QFont.HintingPreference.PreferFullHinting)
-    return font
+BUS_LOGO = "busses_roundel.svg"
+RAIL_LOGO = "National_Rail_logo.svg"
 
 
 class RailDepartureWidget(QWidget):
@@ -34,30 +27,28 @@ class RailDepartureWidget(QWidget):
         self.main_layout.addWidget(header)
         self.main_layout.addStretch()
 
-        self.logo = QSvgWidget("busses_roundel.svg")
+        self.logo = QSvgWidget(RAIL_LOGO)
+        self.logo.setMaximumSize(QtCore.QSize(140, 140))
+        self.logo.renderer().setAspectRatioMode(
+            QtCore.Qt.AspectRatioMode.KeepAspectRatio
+        )
         header_layout.addWidget(self.logo)
 
-        self.location_label = QLabel()
+        self.location_label = QLabel("Fetching data...")
         self.location_label.setProperty("class", "station-name")
-        self.location_label.setFont(make_font(60))
+        self.location_label.setFont(font.make_font(60))
         header_layout.addWidget(self.location_label)
-
-        header_layout.addStretch()
-
-        self.time = QLabel("13:01")
-        self.time.setProperty("class", "time")
-        self.time.setAlignment(QtCore.Qt.AlignmentFlag.AlignTop)
-        self.time.setFont(make_font(30))
-        header_layout.addWidget(self.time)
 
         self.departures_widgets = []
 
     def update_departures(self, departures: DeparturesInfo):
+        print(f"update {departures}")
+
         for w in self.departures_widgets:
             self.main_layout.removeWidget(w)
         self.location_label.setText(departures.location)
         if departures.transit == TransitType.NATIONAL_RAIL:
-            self.logo.load("National_Rail_logo.svg")
+            self.logo.load(RAIL_LOGO)
         elif departures.transit == TransitType.BUS:
             self.logo.load("busses_roundel.svg")
 
@@ -76,13 +67,13 @@ class RailDepartureWidget(QWidget):
             else:
                 no_deps = QLabel("No departures found")
                 no_deps.setProperty("class", "no-deps")
-                no_deps.setFont(make_font(20))
+                no_deps.setFont(font.make_font(20))
                 self.departures_widgets = [no_deps]
                 self.main_layout.addWidget(no_deps)
         else:
             error = QLabel("Exception: " + departures.failtext)
             error.setProperty("class", "error")
-            error.setFont(make_font(20))
+            error.setFont(font.make_font(20))
             error.setMaximumWidth(1000)
             self.departures_widgets = [error]
             self.main_layout.addWidget(error)
@@ -102,24 +93,21 @@ class DepartureTimeWidget(QFrame):
             # ?
             self.setProperty("state", "cancelled")
 
-        font = QtGui.QFontDatabase.font(JOHNSTON_FAMILY, JOHNSTON_STYLE, 50)
-        font.setHintingPreference(QtGui.QFont.HintingPreference.PreferFullHinting)
-
         layout = QHBoxLayout()
         self.setLayout(layout)
 
         if dep.std is not None:
             std_label = QLabel(dep.std)
-            std_label.setFont(font)
+            std_label.setFont(font.make_font(50))
             std_label.setProperty("class", "departure-time")
             layout.addWidget(std_label)
 
         to_label = QLabel(dep.to)
-        to_label.setFont(font)
+        to_label.setFont(font.make_font(50))
         layout.addWidget(to_label)
 
         layout.addStretch()
 
         etd_label = QLabel(dep.etd)
-        etd_label.setFont(font)
+        etd_label.setFont(font.make_font(50))
         layout.addWidget(etd_label)

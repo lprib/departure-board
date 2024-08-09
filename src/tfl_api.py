@@ -4,6 +4,7 @@
 
 # 490014149S walpole road south
 
+import asyncio
 import requests
 import json
 import datetime
@@ -29,7 +30,6 @@ class TflStopPointService(DepartureService):
         return f"TflStopPointService({self.naptan})"
 
     def get_board_sync(self) -> DeparturesInfo:
-        logger.info(f"fetching board {self}")
         try:
             response = requests.get(
                 f"https://api.tfl.gov.uk/StopPoint/{self.naptan}/Arrivals"
@@ -71,6 +71,10 @@ class TflStopPointService(DepartureService):
             etd = f"{minutes} min"
 
         return Departure(to, None, etd, DepartureStatus.ON_TIME, arrival_time=arrival)
+
+    async def get_board_async(self) -> DeparturesInfo:
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(None, self.get_board_sync)
 
 
 if __name__ == "__main__":

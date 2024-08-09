@@ -30,7 +30,6 @@ class RailDepartureService(DepartureService):
         return f"RailDepartureService({self.crs}, {self.operator_filter})"
 
     def get_board_sync(self) -> DeparturesInfo:
-        logger.info(f"fetching board {self}")
         try:
             settings = Settings(strict=False)
             history = HistoryPlugin()
