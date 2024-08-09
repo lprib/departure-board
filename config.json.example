@@ -1,14 +1,18 @@
 {
     "ldbws_api_key": "your key here",
+    "ms_per_screen": "8000",
     "boards": [
         {
-            "type": "ldbws",
-            "crs": "WIM",
-            "operator": "Thameslink"
+            "type": "tfl",
+            "naptan": "490000138F"
         },
         {
             "type": "ldbws",
-            "crs": "CLJ"
+            "crs": "EDB"
+        },
+        {
+            "type": "ldbws",
+            "crs": "CSS"
         },
         {
             "type": "tfl",
