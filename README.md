@@ -13,6 +13,7 @@ Configured by opening `config.json` from working directory. See `config.json.exa
 2. activate venv
 3. install requirements.txt
 4. `cp config.json.example config.json`
-5. `python src/ui.py`
+5. Change `ldbws_api_key` in config.json
+6. `python src/ui.py`
 
 Script `setup.sh` will do steps 1-4 for you
