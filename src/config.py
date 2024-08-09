@@ -17,6 +17,13 @@ class Config:
     def ldbws_api_key(self) -> str:
         return self.c["ldbws_api_key"]
 
+    def ms_per_screen(self) -> int:
+        try:
+            return int(self.c["ms_per_screen"])
+        except Exception:
+            logger.exception(exc_info=True)
+            return 15000
+
     def board_service(self, board_conf) -> departure_service.DepartureService:
         typ = board_conf["type"]
         if typ == "ldbws":

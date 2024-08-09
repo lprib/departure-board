@@ -82,8 +82,10 @@ QLabel[class="station-label"] {
 
 .no-deps {
     font-size: 40px;
-    background-color: #fcc64f;
+    background-color: #ffffff;
+    border: 3px solid #fcc64f;
     color: #000000;
+    margin: 5px;
 }
 
 QProgressBar {
@@ -103,7 +105,14 @@ QProgressBar::chunk {
     padding: 0px;
 }
 
+.screen-pad-frame {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 300px;
+    margin-right: 300px;
+}
+
 .screen-manager QStackedWidget {
-    margin: 0px;
+    margin: 50px;
     padding: 0px;
 }

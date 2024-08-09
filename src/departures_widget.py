@@ -16,6 +16,7 @@ class RailDepartureWidget(QWidget):
         self.main_layout = QVBoxLayout()
         self.setProperty("class", "depboard")
         self.setLayout(self.main_layout)
+        self.main_layout.setAlignment(QtCore.Qt.AlignmentFlag.AlignTop)
 
         header = QFrame()
         header.setProperty("class", "title-frame")
@@ -25,7 +26,6 @@ class RailDepartureWidget(QWidget):
         header_layout.setContentsMargins(0, 0, 0, 0)
         header.setLayout(header_layout)
         self.main_layout.addWidget(header)
-        self.main_layout.addStretch()
 
         self.logo = QSvgWidget(RAIL_LOGO)
         self.logo.setMaximumSize(QtCore.QSize(140, 140))
@@ -42,10 +42,9 @@ class RailDepartureWidget(QWidget):
         self.departures_widgets = []
 
     def update_departures(self, departures: DeparturesInfo):
-        print(f"update {departures}")
-
         for w in self.departures_widgets:
             self.main_layout.removeWidget(w)
+            w.deleteLater()
         self.location_label.setText(departures.location)
         if departures.transit == TransitType.NATIONAL_RAIL:
             self.logo.load(RAIL_LOGO)

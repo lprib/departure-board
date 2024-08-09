@@ -11,16 +11,17 @@ import font
 
 
 class ScreenManager(QFrame):
-    SCREEN_FLIP_TIME_MS = 15000
     TICK_TIME_MS = 50
 
     def __init__(
         self,
         screens: list[tuple[RailDepartureWidget, DepartureService]],
+        ms_per_screen: int,
     ):
         super().__init__()
         self.setProperty("class", "screen-manager")
 
+        self.ms_per_screen = ms_per_screen
         self.screens = screens
 
         next_shortcut = QtGui.QShortcut(QtCore.Qt.Key.Key_Space, self)
@@ -32,10 +33,16 @@ class ScreenManager(QFrame):
         layout.setContentsMargins(0, 0, 0, 0)
         self.setLayout(layout)
 
+        frame = QFrame()
+        frame_layout = QGridLayout()
+        frame.setLayout(frame_layout)
+        frame.setContentsMargins(0, 0, 0, 0)
+        frame.setProperty("class", "screen-pad-frame")
         self.stack = QStackedWidget()
+        frame_layout.addWidget(self.stack)
         self.stack.setContentsMargins(0, 0, 0, 0)
 
-        layout.addWidget(self.stack, 0, 0)
+        layout.addWidget(frame, 0, 0)
 
         self.time = QLabel("??:??")
         self.time.setProperty("class", "time")
@@ -43,11 +50,11 @@ class ScreenManager(QFrame):
         self.time.setAlignment(
             QtCore.Qt.AlignmentFlag.AlignTop | QtCore.Qt.AlignmentFlag.AlignRight
         )
-        layout.addWidget(self.time, 0, 0)
+        frame_layout.addWidget(self.time, 0, 0)
 
         self.progress = QProgressBar()
         self.progress.setProperty("class", "screen-progress")
-        self.progress.setMaximum(self.SCREEN_FLIP_TIME_MS)
+        self.progress.setMaximum(self.ms_per_screen)
         self.progress.setValue(0)
         self.progress.setTextVisible(False)
         self.progress.setContentsMargins(0, 0, 0, 0)
@@ -90,7 +97,7 @@ class ScreenManager(QFrame):
         self.progress.setValue(self.screen_flip_time)
         self.progress.update()
 
-        if self.screen_flip_time > self.SCREEN_FLIP_TIME_MS:
+        if self.screen_flip_time > self.ms_per_screen:
             self.screen_flip_time = 0
             await self.next_screen(self.stack.currentIndex())
 
@@ -101,8 +108,8 @@ class ScreenManager(QFrame):
         else:
             self.stack.setCurrentIndex(index + 1)
 
-        # now update the old screen
-        await self.update_screen(index)
+        # now update the upcoming screen
+        await self.update_screen((index + 2) % len(self.screens))
 
     @QtCore.Slot()
     async def update_time(self):

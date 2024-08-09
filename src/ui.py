@@ -40,7 +40,10 @@ if __name__ == "__main__":
         _style = f.read()
         app.setStyleSheet(_style)
 
-    widget = ScreenManager([(RailDepartureWidget(), s) for s in conf.board_services()])
+    widget = ScreenManager(
+        [(RailDepartureWidget(), s) for s in conf.board_services()],
+        conf.ms_per_screen(),
+    )
     widget.setFixedSize(1920, 360)
     widget.setProperty("class", "window")
     widget.show()
