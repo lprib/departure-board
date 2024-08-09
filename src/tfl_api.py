@@ -23,32 +23,34 @@ logger = logging.getLogger(__name__)
 
 
 class TflStopPointService(DepartureService):
-    def __init__(self, naptan: str):
-        self.naptan = naptan
+    def __init__(self, naptans: list[str]):
+        self.naptans = naptans
 
     def __str__(self):
         return f"TflStopPointService({self.naptan})"
 
     def get_board_sync(self) -> DeparturesInfo:
         try:
-            response = requests.get(
-                f"https://api.tfl.gov.uk/StopPoint/{self.naptan}/Arrivals"
-            )
-            data = json.loads(response.content)
-            deps = [self.parse_departure(d) for d in data]
-            deps = [d for d in deps if d is not None]
+            deps = []
+            for naptan in self.naptans:
+                response = requests.get(
+                    f"https://api.tfl.gov.uk/StopPoint/{naptan}/Arrivals"
+                )
+                data = json.loads(response.content)
+                deps.extend([self.parse_departure(d) for d in data])
 
+            deps = [d for d in deps if d is not None]
             deps.sort(key=lambda d: d.arrival_time)
 
             stop_point_info = requests.get(
-                f"https://api.tfl.gov.uk/StopPoint/{self.naptan}"
+                f"https://api.tfl.gov.uk/StopPoint/{self.naptans[0]}"
             )
             stop_point_data = json.loads(stop_point_info.content)
 
             return DeparturesInfo(TransitType.BUS, stop_point_data["commonName"], deps)
         except Exception as e:
             logger.exception("exception in board fetch", exc_info=True)
-            return DeparturesInfo(TransitType.BUS, self.naptan, [], str(e))
+            return DeparturesInfo(TransitType.BUS, ", ".join(self.naptans), [], str(e))
 
     def parse_departure(self, dep) -> Departure:
         line = dep["lineName"]

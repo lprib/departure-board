@@ -4,7 +4,7 @@
     "boards": [
         {
             "type": "tfl",
-            "naptan": "490000138F"
+            "naptan": ["490000138F"]
         },
         {
             "type": "ldbws",
@@ -16,7 +16,7 @@
         },
         {
             "type": "tfl",
-            "naptan": "490014149S"
+            "naptan": ["490014149S"]
         }
     ]
 }
